@@ -12,7 +12,12 @@ spec:
       labels:
         app: nginx
     spec:
-      affinity:
+      tolerations:
+          - key: "nodeGroup"
+            operator: "Equal"
+            value: "gp-spot"
+            effect: "NoSchedule"
+        affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
           - labelSelector:
